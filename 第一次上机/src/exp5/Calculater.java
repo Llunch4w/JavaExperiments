@@ -120,7 +120,7 @@ class CalControl{
 						back++;
 					int a = Integer.parseInt(s.substring(front, i));
 					int b = Integer.parseInt(s.substring(i+1, back));
-					double sum = a + (double)b/(Math.pow(10, back-i));
+					double sum = a + (double)b/(Math.pow(10, back-i-1));
 					temp_doubles.add(sum);
 					newS += "#";
 					newS += s.substring(back,back+1);

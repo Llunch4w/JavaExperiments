@@ -10,11 +10,11 @@ public class Traingle {
 	private Point points[] = new Point[3];
 	public void setPoints() {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("please input the points:");
-		for(int i = 0;i < 3;i++) {
+		for(int i = 1;i <= 3;i++) {
+			System.out.println("please input the " + i + " point:");
 			int x = scan.nextInt();
 			int y = scan.nextInt();
-			points[i] = new Point(x,y);
+			points[i-1] = new Point(x,y);
 		}
 	}
 	public double calculate() {
@@ -31,6 +31,10 @@ public class Traingle {
 	public static void main(String[] args) {
 		Traingle traingle = new Traingle();
 		traingle.setPoints();
-		System.out.println(traingle.calculate());
+		if(traingle.calculate() <= 0) {
+			System.out.println("不构成三角形");
+		}
+		else
+			System.out.println(traingle.calculate());
 	}
 }
