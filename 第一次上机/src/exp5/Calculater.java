@@ -1,3 +1,4 @@
+//Calculater.java
 package exp5;
 
 import javax.swing.*;
@@ -11,7 +12,7 @@ import java.util.Stack;
 public class Calculater extends JFrame{
 	private ShowWindow showResult = new ShowWindow();
 	private ButtonWindow buttonGrid = new ButtonWindow();
-	public Calculater(String s) {
+	public Calculater(String s) {//初始布局
 		super(s);
 		setLayout(new BorderLayout());
 		add(BorderLayout.NORTH,showResult);
@@ -52,7 +53,7 @@ class ButtonWindow extends JPanel{
 		for(int i = 3;i < 6;i++)
 			allButtons.add(charButtons.get(i));
 		for(int i = 0;i < 16;i++) {
-			allButtons.get(i).addActionListener(new ActionListener(){
+			allButtons.get(i).addActionListener(new ActionListener(){//给按钮加监听
 				public void actionPerformed(ActionEvent e) {
 					String str = e.getActionCommand();
 					if(str.equals("=")) {
@@ -72,10 +73,10 @@ class ButtonWindow extends JPanel{
 		setLayout(new GridLayout(4,4));
 		
 		for(int i = 0;i < 10;i++) {
-			numberButtons.add(new JButton(Integer.toString(i)));		
+			numberButtons.add(new JButton(Integer.toString(i)));//数字按键		
 		}
 			
-		String enum_charactor[] = {"/","*","-",".","=","+"};
+		String enum_charactor[] = {"/","*","-",".","=","+"};//符号按键
 		for(String c:enum_charactor) {
 			charButtons.add(new JButton(c));
 		}
@@ -106,7 +107,7 @@ class CalControl{
 		String newS = "";
 		ArrayList<Double> temp_doubles = new ArrayList<Double>();
 //		ArrayList<Integer> temp_ints = new ArrayList<Integer>();
-		for(int i = 0;i < s.length();i++) {
+		for(int i = 0;i < s.length();i++) {//解析字符串
 			System.out.println(s.charAt(i));
 			
 			if(Character.isDigit(s.charAt(i))) {
@@ -146,7 +147,7 @@ class CalControl{
 		map.put("*", 1);
 		map.put("/", 1);
 		int cnt = 0;
-		for(int i = 0;i < newS.length();i++) {
+		for(int i = 0;i < newS.length();i++) {//用堆栈进行逻辑计算
 			if(!newS.substring(i,i+1).equals("#")){	
 				if(stringSta.empty() || map.get(stringSta.peek()) < map.get(newS.substring(i,i+1)))
 					stringSta.push(newS.substring(i, i+1));
